@@ -3,7 +3,6 @@ import axios from "axios";
 const API_URL = "http://localhost:6543/auth/";
 const instance = axios.create({ baseURL: API_URL });
 
-// Rafraîchir le token
 export const refreshTokenRequest = (token) => 
   instance.post("refreshtoken", { refreshToken: token });
 
@@ -12,7 +11,6 @@ export const logout = () => {
   window.location.href = "/login";
 };
 
-// Ajouter un intercepteur pour gérer l'expiration du token
 instance.interceptors.response.use(
   (response) => response,
   async (error) => {

@@ -19,14 +19,12 @@ const router = createRouter({
   routes,
 });
 
-// Vérifier si le token est expiré
 const isTokenExpired = (token) => {
   if (!token) return true;
   const decoded = jwtDecode(token);
-  return decoded.exp * 1000 < Date.now(); // Vérifier l'expiration
+  return decoded.exp * 1000 < Date.now();
 };
 
-// Gestion de la navigation
 router.beforeEach(async (to, from, next) => {
   let user = JSON.parse(localStorage.getItem("user"));
 
