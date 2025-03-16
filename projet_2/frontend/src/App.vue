@@ -8,10 +8,15 @@
       <button v-if="user" @click="logout">Déconnexion</button>
     </nav>
     <router-view />
+    <footer>
+      <p>KHERZA Yahia | VIDY Enzo - Tous droits réservés</p>
+    </footer>
   </div>
 </template>
 
 <script>
+import { logout } from "@/services/authService";
+
 export default {
   data() {
     return {
@@ -20,9 +25,8 @@ export default {
   },
   methods: {
     logout() {
-      localStorage.removeItem("user");
+      logout();
       this.user = null;
-      this.$router.push("/login");
     },
   },
   watch: {
@@ -30,8 +34,14 @@ export default {
       this.user = JSON.parse(localStorage.getItem("user"));
     },
   },
+  created() {
+    window.addEventListener("storage", () => {
+      this.user = JSON.parse(localStorage.getItem("user"));
+    });
+  },
 };
 </script>
+
 
 <style scoped>
 nav {
@@ -65,6 +75,14 @@ button {
 button:hover {
   background: darkred;
 }
+
+footer {
+  margin-top: 20px;
+  padding: 10px;
+  background: #42b983;
+  color: white;
+  border-radius: 10px;
+}
 </style>
 
 
@@ -87,6 +105,6 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #2c3e50;
 }
 </style>
