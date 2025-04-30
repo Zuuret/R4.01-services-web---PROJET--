@@ -24,6 +24,9 @@ Fonctionnalités :
     Page d’accueil sécurisée après connexion
     Stockage des sessions dans des cookies
 
+Démarrage :
+    
+
 Mini-projet 2 : Authentification avec JWT (JSON Web Token)
 
 Ce second mini-projet repose sur une authentification basée sur JWT, où le client (Vue.js) doit gérer le stockage et la gestion des tokens JWT.
@@ -40,6 +43,13 @@ Fonctionnalités :
     Connexion avec génération et validation de JWT
     Page d’accueil sécurisée avec JWT
     Gestion du token côté client
+
+Démarrage :
+
+    Utilisez une version NodeJS 16+
+    Lancez `npm install` dans les dossiers backend et frontend
+    Lancez `npm start` dans le dossier backend
+    Lancez `npm run serve` dans le dossier frontend
 
 Mini-projet 3 : Authentification OAuth2 avec Google et Chat en temps réel
 
@@ -67,3 +77,9 @@ Objectifs pédagogiques :
     Implémenter une authentification OAuth2 avec un fournisseur tiers
     Mettre en place un système de chat en temps réel
     Optimiser la gestion des sessions avec Redis
+
+Démarrage :
+
+    Utilisez une version NodeJS 20+
+    Lancez `npm install` dans les dossiers server et vue-chat
+    Lancez `npm run dev` dans le dossier server
