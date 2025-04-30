@@ -64,20 +64,7 @@ app.post('/api/signup', async (req, res) => {
         lastname,
         password: hashedPassword,
       });
-
-      // Log the user in
-      req.login(newUser, (err) => {
-        if (err) {
-          return res.status(500).json({ message: 'Erreur de session' });
-        }
-        return res.status(200).json({
-          message: 'Inscription réussie',
-          user: {
-            email: newUser.email,
-            id: newUser.id
-          }
-        });
-      });
+      
     } catch (error) {
       console.error('Erreur lors de l\'inscription:', error);
       return res.status(500).json({ message: 'Erreur serveur lors de l\'inscription' });

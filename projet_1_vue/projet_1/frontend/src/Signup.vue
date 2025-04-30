@@ -50,11 +50,10 @@ export default {
           })
         });
 
-        if (!res.ok) throw new Error('Inscription échouée');
         const data = await res.json();
 
         // Si l'inscription réussit, on redirige vers une autre page
-        this.$router.push('/home'); // Modifier l'URL de redirection si nécessaire
+        this.$router.push('/'); // Modifier l'URL de redirection si nécessaire
       } catch (err) {
         this.error = err.message;
       }
