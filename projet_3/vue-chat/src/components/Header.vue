@@ -27,8 +27,8 @@
       const authStore = useAuthStore();
       onMounted(() => authStore.fetchUser());
       const auth = computed(() => authStore.user);
-      const login = () => window.location = '/auth/google';
-      const logout = () => window.location = '/auth/logout';
+      const login = () => window.location = 'http://localhost:5000/auth/google';
+      const logout = () => window.location = 'http://localhost:5000/auth/logout';
       return { auth, login, logout };
     }
   };
