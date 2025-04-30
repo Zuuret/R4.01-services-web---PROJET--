@@ -3,16 +3,16 @@
       <h2>Inscription</h2>
       <form @submit.prevent="signup">
         <div>
-          <label for="firstName">Prénom</label>
-          <input type="text" id="firstName" v-model="firstName" required />
+          <label for="firstname">Prénom</label>
+          <input type="text" id="firstname" v-model="firstname" required />
         </div>
         <div>
-          <label for="lastName">Nom</label>
-          <input type="text" id="lastName" v-model="lastName" required />
+          <label for="lastname">Nom</label>
+          <input type="text" id="lastname" v-model="lastname" required />
         </div>
         <div>
-          <label for="emailId">Email</label>
-          <input type="email" id="emailId" v-model="emailId" required />
+          <label for="emailid">Email</label>
+          <input type="email" id="emailid" v-model="emailid" required />
         </div>
         <div>
           <label for="password">Mot de passe</label>
@@ -29,9 +29,9 @@
   export default {
     data() {
       return {
-        firstName: '',
-        lastName: '',
-        emailId: '',
+        firstname: '',
+        lastname: '',
+        emailid: '',
         password: '',
       };
     },
@@ -39,9 +39,9 @@
       async signup() {
         try {
           const response = await signup({
-            firstName: this.firstName,
-            lastName: this.lastName,
-            emailId: this.emailId,
+            firstname: this.firstname,
+            lastname: this.lastname,
+            emailid: this.emailid,
             password: this.password,
           });
           alert(response.data.message);

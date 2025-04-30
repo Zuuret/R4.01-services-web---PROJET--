@@ -1,60 +1,55 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const passport = require("passport");
-const session = require("express-session");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-
-app.use(cors({
-    origin: "http://localhost:3000",
-    credentials: true
-}));
-
-
-// Encodage
-app.use(bodyParser.urlencoded({extended:true}));
+app.get('/', function(req, res) {
+res.send('Welcome to Passport with Sequelize');
+});
+app.listen(3000, function(err) {
+if (!err)
+console.log("Le serveur ecoute sur le port 3000");
+else console.log(err)
+});
+const passport = require('passport')
+const session = require('express-session')
+const bodyParser = require('body-parser')
+//Pour BodyParser
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-const dotenv = require("dotenv");
-dotenv.config();
-console.log(process.env.SECRET);
-
-// Handlebars
-const exphbs = require("express-handlebars");
-app.set("views","./views");
-app.set("view engine", ".hbs");
-app.engine("hbs",exphbs.engine({extname: ".hbs"
-    , defaultLayout:"",layoutsDir:""
-}));
-
-// Models
-const models = require("./models");
-models.sequelize.sync().then(()=> {
-    console.log("BDD fonctionne bien");
-}).catch((err)=> {
-    console.log(err);
-})
-
-// Passport
+// Pour Passport
 app.use(session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        secure: false, // Mettre à `true` en production avec HTTPS
-        httpOnly: true, // Empêche l'accès aux cookies via JavaScript côté client
-        sameSite: "lax", // Permet d'envoyer les cookies avec les requêtes venant du front Vue.js
-        maxAge: 1000 * 60 * 60 // 1 heure
-    }
+  secret: 'butinfo',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000,  // 1 jour (en millisecondes)
+    httpOnly: true,                // Empêche l'accès au cookie depuis JavaScript côté client
+    secure: false                  // Si tu utilises HTTPS, mets `secure: true`
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-require("./config/passport/passport.js")(passport,models.user);
-require('./routes/auth.js')(app,passport);
-
-app.get("/",(req,res)=> {
-    res.redirect("/home");
+//Pour dotenv
+const dotenv = require("dotenv");
+dotenv.config()
+//Models
+const models = require("./models");
+const authRoute = require('./routes/auth.js')(app,passport);
+//charger les stratégies passport
+require('./config/passport/passport.js')(passport,models.user);
+//Sync Database
+models.sequelize.sync().then(function() {
+console.log('La base de données fonctionne bien')
+}).catch(function(err) {
+console.log(err, "Quelque chose s'est mal passé avec la mise à jour de la base de données!")
+});
+const exphbs = require('express-handlebars')
+//Pour Handlebars
+app.set('views', './views')
+app.set('view engine', '.hbs');
+app.engine(
+'hbs',
+exphbs.engine({
+extname: ".hbs",
+defaultLayout: "",
+layoutsDir: "",
 })
-
-app.listen(3000,()=>{
-    console.log("Serveur ecoute sur port 3000")});
+);

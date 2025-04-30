@@ -24,17 +24,17 @@ module.exports = function(app) {
      *                schema:
      *                    type: object
      *                    properties:
-     *                        firstName:
+     *                        firstname:
      *                          type: string
      *                          minLength: 1
      *                          maxLength: 50
      *                          example: firstname
-     *                        lastName:
+     *                        lastname:
      *                          type: string
      *                          minLength: 1
      *                          maxLength: 50
      *                          example: lastname
-     *                        emailId:
+     *                        emailid:
      *                          type: string
      *                          minLength: 1
      *                          maxLength: 50
@@ -76,7 +76,7 @@ module.exports = function(app) {
      *                schema:
      *                    type: object
      *                    properties:
-     *                        emailId:
+     *                        emailid:
      *                          type: string
      *                          minLength: 1
      *                          maxLength: 50
