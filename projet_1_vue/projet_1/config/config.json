@@ -1,0 +1,12 @@
+{
+    "development": {
+    "username": "postgres",
+    "password": "1234",
+    "database": "bdd_node_1",
+    "host": "localhost",
+    "port" : 5432,
+    "dialect": "postgres"
+    },
+    "test": {},
+    "production": {}
+    }

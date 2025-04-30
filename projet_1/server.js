@@ -15,7 +15,16 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Pour Passport
-app.use(session({ secret: 'butinfo',resave: true, saveUninitialized:true}));
+app.use(session({
+  secret: 'butinfo',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000,  // 1 jour (en millisecondes)
+    httpOnly: true,                // Empêche l'accès au cookie depuis JavaScript côté client
+    secure: false                  // Si tu utilises HTTPS, mets `secure: true`
+  }
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 //Pour dotenv
