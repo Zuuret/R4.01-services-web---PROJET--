@@ -2,7 +2,7 @@
     <nav class="indigo">
       <div class="nav-wrapper container">
         <router-link :to="auth ? '/blogs' : '/'" class="brand-logo">
-          BUT S4 R403 + R401
+          KHERZA Yahia - VIDY Enzo --- BUT S4 R403 + R401
         </router-link>
         <ul class="right">
           <li v-if="auth === null"></li>
