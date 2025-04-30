@@ -9,7 +9,7 @@ node_modules
 projet_1/.env
 projet_2/.env
 projet_3/.env
-
+projet_1/config/config.json
 
 # Log files
 npm-debug.log*

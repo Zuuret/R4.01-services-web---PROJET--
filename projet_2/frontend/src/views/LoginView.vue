@@ -3,8 +3,8 @@
     <h2>Connexion</h2>
     <form @submit.prevent="login">
       <div>
-        <label for="emailId">Email</label>
-        <input type="email" id="emailId" v-model="emailId" required />
+        <label for="emailid">Email</label>
+        <input type="email" id="emailid" v-model="emailid" required />
       </div>
       <div>
         <label for="password">Mot de passe</label>
@@ -21,7 +21,7 @@ import { login } from "@/services/authService";
 export default {
   data() {
     return {
-      emailId: "",
+      emailid: "",
       password: "",
     };
   },
@@ -29,7 +29,7 @@ export default {
     async login() {
       try {
         const response = await login({
-          emailId: this.emailId,
+          emailid: this.emailid,
           password: this.password,
         });
         localStorage.setItem("user", JSON.stringify(response.data));

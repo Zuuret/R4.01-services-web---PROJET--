@@ -1,17 +1,37 @@
-const {DataTypes} = require("sequelize");
+const { DataTypes } = require('sequelize');
+
 module.exports = function(sequelize) {
-    const User = sequelize.define('user',{
-        id:{autoIncrement:true,primaryKey:true,
-            type: DataTypes.INTEGER, allowNull:false
-        },
-        firstName: {type:DataTypes.STRING, notEmpty:true},
-        lastName: {type:DataTypes.STRING, notEmpty:true},
-        emailId: {type:DataTypes.STRING, notEmpty:true,
-            validate:{isEmail:true}
-        },
-        password: {type:DataTypes.STRING,allowNull:false}
+  const User = sequelize.define('user', {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+      allowNull: false
     },
-    {tableName:"users"}
-    );
-    return User;
-}
+    firstname: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastname: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    emailid: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  }, {
+    tableName: 'users',
+    timestamps: false // Ajoute les champs createdAt et updatedAt automatiquement
+  });
+
+  return User;
+};
