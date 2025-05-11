@@ -10,7 +10,6 @@
             <a @click.prevent="login">Connectez-vous avec Google</a>
           </li>
           <template v-else>
-            <li><router-link to="/blogs">Mes blogs</router-link></li>
             <li><router-link to="/chat">Chat</router-link></li>
             <li><a @click.prevent="logout">Déconnexion</a></li>
           </template>

@@ -1,11 +1,11 @@
-# S5 BUT NORD FRANCHE COMTE
+# S4 BUT NORD FRANCHE COMTE
 
 
 Projet de départ pour le cours Nouvelles bases de données: NodeJS + NoSQL
 
 
 ### Setup
-- Utilisez NodeJS version 16+
+- Utilisez NodeJS version 18+
 - Lancez `npm install` àdasn le dossier sevrer pour installer les dépendances du serveur.
 - Allez dans le répertoire  et exécutez `npm install --legacy-peer-deps --force`
 - Retournez dans le dossier server et lancez `npm run dev` pour démarrer le serveur.

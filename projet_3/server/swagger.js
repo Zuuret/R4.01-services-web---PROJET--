@@ -4,7 +4,7 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Mini-Projet 3 – BUT S4 R403+R401',
+      title: 'Mini-Projet 3 – BUT S4 R403+R401 - KHERZA Yahia & VIDY Enzo',
       version: '1.0.0',
       description: 'Auth OAuth2 + Chat en temps réel',
       contact: { name: 'Étudiants: Enzo VIDY, Yahia KHERZA' }
@@ -14,5 +14,5 @@ const options = {
 };
 const specs = swaggerJsdoc(options);
 module.exports = app => {
-  app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs));
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 };

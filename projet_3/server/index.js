@@ -26,8 +26,10 @@ mongoose.connect(keys.mongoURI, {
 const app = express();
 
 const server = createServer(app);
+
+
 const io = new Server(server, {
-  cors: { origin: 'http://localhost:3000', credentials: true }
+  cors: { origin: ["http://localhost:3000", "http://localhost:8080", "http://localhost:5173"], credentials: true }
 });
 // CORS configuration
 const corsOptions = {
@@ -71,6 +73,6 @@ io.on('connection', socket => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Le serveur ecoute sur le port: `, PORT);
+server.listen(PORT, () => {
+  console.log(`Le serveur écoute sur le port: ${PORT}`);
 });
